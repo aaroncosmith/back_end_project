@@ -27,7 +27,7 @@ class getImageDisplay {
     }
     static async getById(picture) {
         try {
-            const response = await db.one(`SELECT * FROM images WHERE id = ${picture}`);
+            const response = await db.one(`SELECT * FROM images WHERE id = ${picture};`);
             return response;
         } catch (error) {
             console.error('ERROR', error)

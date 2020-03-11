@@ -38,6 +38,6 @@ app.set('view engine', 'html');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter)
-app.use('/picture', singleImgRouter)
+app.use('/single-img', singleImgRouter)
 
 module.exports = app;

@@ -1,7 +1,7 @@
 const express = require('express'),
   router = express.Router(),
-  bcrypt = require('bcryptjs')
-usersModel = require('../models/usersModel')
+  bcrypt = require('bcryptjs'),
+usersModel = require('../models/userModel')
 
 
 router.get('/login', function (req, res, next) {

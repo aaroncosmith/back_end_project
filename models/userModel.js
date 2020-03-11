@@ -1,13 +1,12 @@
-const db = require('./con'),
+const db = require('./conn'),
 bcrypt = require('bcryptjs');
 
 class Users {
-    constructor(id, name, email, password, followers) {
+    constructor(id, name, email, password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
-        this.followers = followers;
     }
 
     checkpassword(hashedPassword) {

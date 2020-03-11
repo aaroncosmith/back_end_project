@@ -1,4 +1,13 @@
-
 <p>
-    <a href="/singe-img/${picture}">click</a>
+    ${resultData.map (images => {
+return `<ul><img src=${images.picture}>
+    <a href="/singe-img/${images.id}">click</a>
+</ul>`}).join('')}
 </p>
+
+
+
+
+
+
+

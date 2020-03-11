@@ -4,11 +4,12 @@ imageModel = require('../models/imageModel');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  const result = await imageModel.renderImage();
+  const resultData = await imageModel.renderImage();
   res.render('template', {
-    try: {
+    locals: {
       title: 'Film Data',
-      data: result
+      resultData: resultData,
+      is_logged_in: req.session.is_logged_in
     },
     partials: {
       partial: 'partial-index'

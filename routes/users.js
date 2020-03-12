@@ -16,6 +16,22 @@ router.get('/login', function (req, res, next) {
   });
 });
 
+router.post("/login", async function(req, res, next) {
+  const { email, password } = req.body;
+
+  const user = new usersModel(null, null, email, password);
+  const loginResponse = await user.userLogin();
+  console.log('login response is', loginResponse);
+  if (!!loginResponse.isValid) {
+    req.session.is_logged_in = loginResponse.isValid;
+    req.session.user_id = loginResponse.user_id;
+    req.session.name = loginResponse.name;
+    res.redirect('/');
+  } else {
+    res.sendStatus(403);
+  }
+});
+
 router.get('/signup', (req, res) => {
   res.render('template', {
     locals: {
@@ -42,22 +58,24 @@ router.post('/signup', async (req, res) => {
 
 
 
-router.post('/login', (req, res) => {
-  const user = new usersModel(null, null, req.body.email, req.body.password);
-  user.userLogin().then(response => {
-  console.log('Login Status: ', response);
-  })
-  if(response.isValid === true) {
-    req.session.is_logged_in = true;
-    req.session.name = response.name;
-    req.session.email = response.email;
-    req.session.password = response.password;
-    res.redirect('/')
-  } else {
-    res.sendStatus(401);
-    res.redirect()
-  }
-});
+
+// router.post('/login', async (req, res) => {
+//   const user = new usersModel(null, null, req.body.email, req.body.password);
+//   user.userLogin().then(response => {
+//   console.log('Login Status: ', response);
+//   })
+//   if(response.valid === true) {
+//     console.log(valid);
+//     req.session.is_logged_in = true;
+//     req.session.name = response.name;
+//     req.session.email = response.email;
+//     req.session.password = response.password;
+//     res.redirect('/')
+//   } else {
+//     res.sendStatus(401);
+//     res.redirect()
+//   }
+// });
 
 
 router.get('/logout', (req,res) => {

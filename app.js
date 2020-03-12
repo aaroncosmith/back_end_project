@@ -9,7 +9,7 @@ es6Renderer = require('express-es6-template-engine');
 
 const indexRouter = require('./routes/index'),
 usersRouter = require('./routes/users'),
-singleImgRouter = require('./routes/single-img');
+singleImgRouter = require('./routes/images');
 
 const app = express();
 
@@ -23,7 +23,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session ({
-  store: new FileStore(),
   resave: false,
   secret: 'hello',
   saveUninitialized: true,
@@ -38,6 +37,6 @@ app.set('view engine', 'html');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter)
-app.use('/picture', singleImgRouter)
+app.use('/single-img', singleImgRouter)
 
 module.exports = app;

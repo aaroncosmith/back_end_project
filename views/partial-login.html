@@ -1,12 +1,32 @@
-<p>
-    <bold>
-        USER LOG IN
-    </bold>
-</p>
+<div>
+    <div class="columns">
+        <div class="column"></div>
+        <div class="column is-four-fifths has-background-primary">
+            <div class="field">
+                <form action="/users/login" method=post autocomplete="off">
+                <label class="label">Email</label>
+                <div class="control">
+                    <input name="email" class="input" type="email" placeholder="Enter Your Email">
+                <label class="label">Username</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Enter your username">
+               </div>
+            </div>
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                    <input class="input" name="password" type="password" placeholder="Enter your password">
 
+                </div>
+            </div>
+            <div class="field is-grouped is-grouped-centered">
+                <p class="control">
+                    <a class="button is-primary">
 
-<form action="/users/login" method=post autocomplete="off">
-    <input name="email" type="email" placeholder="you@site.com">Email</input>
-    <input name="password" type="password" placeholder="Your Password">Password</input>
-    <button type="submit">Submit</button>
-</form>
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="column"></div>
+    </div>
+</div>

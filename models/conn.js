@@ -7,8 +7,10 @@ const pgp = require('pg-promise')({
     }
 });
 const option = {
-    host: process.env['DB_HOST'],
-    database: process.env['DB_NAME']
+    host: 'drona.db.elephantsql.com',
+    database: 'ikzimdgt',
+    user: 'ikzimdgt',
+    password: 'lXCgQ2jwppOvyFyNs9cLEIK5r_3iVWa8'
 };
 const db = pgp(option);
 

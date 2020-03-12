@@ -1,4 +1,4 @@
-<p>
+<!-- <p>
     <h1>
         USER SIGN UP
     </h1>
@@ -10,33 +10,29 @@
     <input name="email" type="email" placeholder="you@site.com">Email</input>
     <input name="password" type="password" placeholder="Password">Password</input>
     <button type="submit">Submit</button>
-</form>
-
-
-
-
-
+</form> -->
 
 <div>
     <div class="columns">
         <div class="column"></div>
         <div class="column is-four-fifths has-background-primary">
+            <form action="/users/signup" method=post autocomplete="off">
             <div class="field">
-                <label class="label">Username</label>
+                <label class="label">Name</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Pick a Username">
+                    <input name="name" class="input" type="text" placeholder="Enter Your Name">
                 </div>
             </div>
             <div class="field">
                 <label class="label">E-mail</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Enter your e-mail">
+                    <input name="email" class="input" type="text" placeholder="Enter your e-mail">
                 </div>
             </div>
             <div class="field">
                 <label class="label">Password</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Make a password">
+                    <input name="password" class="input" type="text" placeholder="Enter a password">
                 </div>
             </div>
             <div class="field">
@@ -50,7 +46,8 @@
             <div class="field is-grouped is-grouped-centered">
                 <p class="control">
                     <a class="button is-primary">
-                    Submit
+                        <button type="submit">Submit</button>
+                    
                     </a>
                 </p>
                 <p class="control">
@@ -62,6 +59,7 @@
             <div class="has-text-centered">
                 <p>Or you can <a href="#">click here</a> to login instead</p>
             </div>
+            </form>
         </div>
         <div class="column"></div>
     </div>

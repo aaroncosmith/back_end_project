@@ -5,14 +5,22 @@ express = require('express'),
 path = require('path'),
 cookieParser = require('cookie-parser'),
 logger = require('morgan'),
+upload = require("express-fileupload"),
 es6Renderer = require('express-es6-template-engine');
+
+
 
 const indexRouter = require('./routes/index'),
 usersRouter = require('./routes/users'),
-singleImgRouter = require('./routes/images');
+singleImgRouter = require('./routes/images'),
+profileRouter = require('./routes/profile');
+
 
 const app = express();
 
+app.use(upload()) 
+    console.log("Server Started!");
+    
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -36,7 +44,8 @@ app.set('view engine', 'html');
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter)
-app.use('/picture', singleImgRouter)
+app.use('/users', usersRouter);
+app.use('/images', singleImgRouter);
+app.use('/profile', profileRouter);
 
 module.exports = app;

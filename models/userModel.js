@@ -38,6 +38,16 @@ class Users {
         }
     }
 
+    // async userPicture() {
+    //     try {
+    //         const response = await db.one('INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id;', [this.name, this.email,this.password]);
+    //         return response
+    //     } catch (error) {
+    //         console.error('ERROR', error);
+    //         return error;
+    //     }
+    // }
+
 
     async userLogin() {
         try {
@@ -56,5 +66,7 @@ class Users {
         }
     }
 }
+
+
 
 module.exports = Users;

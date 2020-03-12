@@ -20,14 +20,14 @@ router.get('/', async function(req, res, next) {
 
 router.get('/:picture?', async (req,res) => {
     const pictureId = req.params.picture
-    const pictureData = await imageModel.getById(pictureId);
-    
-    console.log(pictureData);
+    const resultData = await imageModel.getById(pictureId);
+
+    console.log(resultData)
     
       res.render('template', {
         locals: {
           title:'Hello',
-          pictureData: pictureData,
+          resultData: resultData,
           is_logged_in:req.session.is_logged_in
         },
         partials: {

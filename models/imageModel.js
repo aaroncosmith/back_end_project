@@ -50,6 +50,7 @@ class PictureReviewModel{
     } catch (error) {
       console.log("ERROR: ", error);
       return error;
+
     }
   }
 }

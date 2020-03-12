@@ -18,9 +18,10 @@ class Users {
                 insert into users 
                     (name, email, password) 
                 values 
-                    ($1, $2, $3, $4) 
+                    ($1, $2, $3) 
                 returning id
-                `, [this.name, this.email, this.password]);
+                `, [this.name, this.email, this.password]
+                );
             console.log("user was created with id:", response.id);
             return response;
         } catch(err) {
@@ -32,19 +33,22 @@ class Users {
             const response = await db.one('INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id;', [this.name, this.email,this.password]);
             return response
         } catch (error) {
-            console.error('ERROR', error)
+            console.error('ERROR', error);
+            return error;
         }
     }
+
+
     async userLogin() {
         try {
-            const response = await db.one(`SELECT id, name, email, password FROM users WHERE email = $1;`, [this.email]);
-            const valid = this.checkpassword(response.password,);
-
-            if(!!valid) {
-                const {name, email, id} = response;
-                return {isValid: valid, name, email, id: id};
+            const response = await db.one(`SELECT id, name, password FROM users WHERE email = $1;`, [this.email]);
+            console.log("response is", response);
+            const isValid = this.checkpassword(response.password);
+            if(!!isValid) {
+                const {id, name} = response;
+                return { isValid, id, name};
             } else {
-                return {isValid:valid}
+                return {isValid};
             }
         } catch (error) {
             console.error('ERROR', error)

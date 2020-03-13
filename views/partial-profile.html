@@ -1,10 +1,29 @@
-<h1 class="top">Welcome ${name}</h1>
-<img src="${resultData[0].picture}">
-<h3>Choose/Change Your Profile Picture</h3>
-<form action='/profile' method="post" enctype="multipart/form-data">
-  <input type='file' name='image' />
-  <input type="submit" value="upload"/>
-</form>
+<div class="partialWrapper">
+  <div class="welcomeArea">
+    <h1 class="top">${name}</h1>
+    <p>20 Likes  |  10 Followers</p>
+  </div>
+  <div id="profilePicArea">
+    <img src="${resultData[0].picture}" class="profilePic">
+    <h3>Choose/Change Your Profile Picture</h3>
+    <form action='/profile' method="post" enctype="multipart/form-data">
+      <input type='file' name='image' />
+      <input type="submit" value="upload"/>
+    </form>
+  </div>
+  <div class="title">
+    <h1>${name}'s Top 5 Images</h1>
+  </div>
+  <div class="photoTable">
+    <img src="https://cdn.pixabay.com/photo/2018/09/01/12/27/crystal-palace-3646684_1280.jpg">
+    <img src="https://cdn.pixabay.com/photo/2015/04/20/13/13/valley-731168_1280.jpg">
+    <img src="https://cdn.pixabay.com/photo/2015/03/14/18/09/sailboat-673555_1280.jpg">
+    <img src="https://cdn.pixabay.com/photo/2015/04/20/13/13/mountain-731167_1280.jpg">
+    <img src="https://cdn.pixabay.com/photo/2019/05/26/22/40/night-sea-4231466_1280.jpg">
+  </div>
+</div>
+
+
 
 
 

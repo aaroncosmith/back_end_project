@@ -21,7 +21,7 @@ router.post("/login", async function(req, res, next) {
 
   const user = new usersModel(null, null, email, password);
   const loginResponse = await user.userLogin();
-  console.log('login response is', loginResponse);
+  // console.log('login response is', loginResponse);
   if (!!loginResponse.isValid) {
     req.session.is_logged_in = loginResponse.isValid;
     req.session.user_id = loginResponse.id;

@@ -8,7 +8,7 @@ imageModel = require('../models/imageModel');
 router.get('/', async function(req, res, next) {
   const user_id = req.session.user_id;
   const resultData = await imageModel.getProfilePicture(user_id);
-  console.log(user_id);
+  // console.log(user_id);
   // console.log(resultData[0].picture);
   if (resultData[0] != undefined) {
   res.render('template', {
@@ -42,12 +42,12 @@ router.post("/", async function(req, res){
   if(req.files) {
       const file = req.files.image,
       filename = file.name;
-      console.log(filename) 
+      // console.log(filename) 
       const picture = "/images/"+filename;   
       const user_id = req.session.user_id;      
       const profilePic = new imageModel(null, picture, user_id); 
       profilePic.userPicture();   
-      console.log(req.session.user_id);
+      // console.log(req.session.user_id);
       file.mv("./public/images/"+filename,function(err){
           if(err) {
               console.log(err)

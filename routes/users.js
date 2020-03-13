@@ -21,12 +21,12 @@ router.post("/login", async function(req, res, next) {
 
   const user = new usersModel(null, null, email, password);
   const loginResponse = await user.userLogin();
-  console.log('login response is', loginResponse);
+  // console.log('login response is', loginResponse);
   if (!!loginResponse.isValid) {
     req.session.is_logged_in = loginResponse.isValid;
-    req.session.user_id = loginResponse.user_id;
+    req.session.user_id = loginResponse.id;
     req.session.name = loginResponse.name;
-    res.redirect('/');
+    res.redirect('/profile');
   } else {
     res.sendStatus(403);
   }
@@ -51,32 +51,9 @@ router.post('/signup', async (req, res) => {
 
   const user = new usersModel(null, name, email, hash);
   user.save().then(() => {
-    res.redirect('/');
+    res.redirect('/users/login');
   });
 });
-  
-
-
-
-
-// router.post('/login', async (req, res) => {
-//   const user = new usersModel(null, null, req.body.email, req.body.password);
-//   user.userLogin().then(response => {
-//   console.log('Login Status: ', response);
-//   })
-//   if(response.valid === true) {
-//     console.log(valid);
-//     req.session.is_logged_in = true;
-//     req.session.name = response.name;
-//     req.session.email = response.email;
-//     req.session.password = response.password;
-//     res.redirect('/')
-//   } else {
-//     res.sendStatus(401);
-//     res.redirect()
-//   }
-// });
-
 
 router.get('/logout', (req,res) => {
   req.session.destroy();

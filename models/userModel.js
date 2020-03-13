@@ -2,11 +2,13 @@ const db = require('./conn'),
 bcrypt = require('bcryptjs');
 
 class Users {
-    constructor(id, name, email, password) {
+    constructor(id, name, email, password, saved_imgs_id, profile_pic_id  ) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.saved_imgs_id = saved_imgs_id;
+        this.profile_pic_id = profile_pic_id;
     }
 
     checkpassword(hashedPassword) {
@@ -56,5 +58,7 @@ class Users {
         }
     }
 }
+
+
 
 module.exports = Users;

@@ -34,7 +34,7 @@ app.use(session ({
   resave: false,
   secret: 'hello',
   saveUninitialized: true,
-  is_logged_in: false
+  is_logged_in: false,
 }));
 
 app.engine('html', es6Renderer);

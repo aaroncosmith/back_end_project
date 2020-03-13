@@ -2,11 +2,13 @@ const db = require('./conn'),
 bcrypt = require('bcryptjs');
 
 class Users {
-    constructor(id, name, email, password) {
+    constructor(id, name, email, password, saved_imgs_id, profile_pic_id  ) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.saved_imgs_id = saved_imgs_id;
+        this.profile_pic_id = profile_pic_id;
     }
 
     checkpassword(hashedPassword) {
@@ -37,16 +39,6 @@ class Users {
             return error;
         }
     }
-
-    // async userPicture() {
-    //     try {
-    //         const response = await db.one('INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id;', [this.name, this.email,this.password]);
-    //         return response
-    //     } catch (error) {
-    //         console.error('ERROR', error);
-    //         return error;
-    //     }
-    // }
 
 
     async userLogin() {

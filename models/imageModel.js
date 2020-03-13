@@ -1,9 +1,11 @@
 const db = require("./conn");
 
+
 class PictureReviewModel{
-  constructor(id, picture) {
+  constructor(id, picture, user_id) {
     this.id = id;
     this.picture = picture;
+    this.user_id = user_id;
   }
 
   static async getAllPictures() {
@@ -19,7 +21,7 @@ class PictureReviewModel{
   static async getPicturesById(r_id) {
     try {
       const response = await db.any(
-        `SELECT * FROM images WHERE id = ${r_id};`
+        `SELECT * FROM images WHERE id = ${user_id};`
       );
       return response;
     } catch (error) {
@@ -52,6 +54,30 @@ class PictureReviewModel{
       return error;
     }
   }
+
+  async userPicture() {
+    try {
+        const response = await db.one('INSERT INTO profile_pictures (picture, user_id) VALUES ($1, $2) RETURNING id;', 
+        [this.picture, this.user_id]);
+        console.log(response);
+        return response
+    } catch (error) {
+        console.error('ERROR', error);
+        return error;
+    }
+  }
+
+  static async getProfilePicture(user_id) {
+    try {
+      // const user_id = this.user_id;
+      const response = await db.any(`SELECT picture FROM profile_pictures WHERE user_id = ${user_id};`);
+      return response;
+    } catch (error) {
+      console.error("ERROR: ", error);
+      return error;
+    }
+  }
+
 }
 
 module.exports = PictureReviewModel;

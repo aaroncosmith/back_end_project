@@ -78,6 +78,17 @@ class PictureReviewModel{
     }
   }
 
+  static async getSavedPicture() {
+    try {
+      // const user_id = this.user_id;
+      const response = await db.any(`SELECT * FROM images;`);
+      return response;
+    } catch (error) {
+      console.error("ERROR: ", error);
+      return error;
+    }
+  }
+
 }
 
 module.exports = PictureReviewModel;

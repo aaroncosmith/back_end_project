@@ -68,3 +68,10 @@ width: 15rem;
   grid-column: 1 / span 2;
   text-align: center;
 }
+
+.top5 {
+  margin-left: 10%;
+  border-radius: 9px;
+  height: 150px;
+  width: 150px;
+}

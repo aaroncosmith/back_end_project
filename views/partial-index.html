@@ -4,17 +4,16 @@
                 
                 ${resultData.map (images => {
                 return `<ul><img class="lazy" data-src=${images.picture}></ul>
-                <button class="button is-primary is-inverted">
-                    <a href="/partial-single-img/${images.id}">Open Image</a>
+                <button onclick="window.location.href = '/partial-single-img/${images.id}';" class="button is-primary is-inverted has-text-primary">
+                    Open Image
                 </button>
-                <button class="button is-primary is-inverted">
-                    <a href="#">Like</a>
+                <button onclick="" class="button is-primary is-inverted">
+                    Like
                 </button>
-                <button class="button is-primary is-inverted">
-                    <a href="#">Uploader</a>
+                <button onclick="" class="button is-primary is-inverted">
+                    Uploader
                 </button>
                 `}).join('')}
-                
         </div>
         <div class="column"></div>
 </coulmns>
